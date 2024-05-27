@@ -85,6 +85,7 @@ svg{
     margin-bottom: 15px;
     color: #1a1919;
     letter-spacing: 1px;
+    border-top: 1px solid #66ca66;
 }
 .text-center{
     text-align: center;
@@ -192,7 +193,12 @@ svg{
     text-align: center;
     padding: 20px 5px;
 }
-#order{
+
+.row .col-md-5 .row{
+    border: 2px solid #bbbbbb;
+    padding: 5px;
+    border-radius: 5px;
+}#order{
     padding: 20px;
 }
 #order h3{
@@ -202,11 +208,6 @@ svg{
 }
 #order h4{
     color: #3f3f3f;
-}
-.row .col-md-5 .row{
-    border: 2px solid #bbbbbb;
-    padding: 5px;
-    border-radius: 5px;
 }
 .billing{
     font-size: large;
