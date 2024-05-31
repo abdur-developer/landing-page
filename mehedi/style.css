@@ -1,0 +1,244 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+}
+header{
+    background-color: #00a500;
+    padding-bottom: 0;
+}
+header img{
+    width: 20%;
+    border-radius: 15%;
+    display: block;
+    padding: 10px;
+    margin: 0 auto;
+}
+header h1{
+    color: white;
+    padding: 5px 15px;
+    font-size: 28px;
+    text-align: center;
+}
+header p{
+    color: black;
+    padding: 5px 15px;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.order-btn {
+    font-size: 20px;
+    border: 5px double black;
+    background-color: yellow;
+    padding: 5px 20px;
+    display: block;
+    margin: 10px auto;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.5s;
+}
+.order-btn:hover{
+    background-color: tomato;
+    border: 5px double white;
+    color: white;
+    transform: scale(1.2);
+}
+header svg{
+    transform: rotate(180deg);
+    margin: 0;
+    fill: #FFFFFF;
+    margin-bottom: -5px;
+}
+
+.one-sec img{
+    width: 60%;
+    display: block;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+.one-sec p{
+    background-color: #00a500;
+    padding: 30px 50px;
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+}
+.one-sec p span{
+    display: block;
+    color: black;
+}
+.two-sec p{
+    margin: 20px;
+    padding: 20px 25px;
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
+    background-color: #00a500;
+}
+.three-sec p{
+    color: red;
+    font-weight: 600;
+    padding: 10px 20px;
+}
+.three-sec img{
+    width: 75%;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto 10px;
+}
+.four-sec h1{
+    font-size: 20px;
+    margin: 10px 20px;
+    padding: 10px 20px;
+    background-color: #00a500;
+    color: white;
+    font-weight: 700;
+}
+.five-sec{
+    background-color: #00a500;
+    padding: 10px;
+}
+.five-sec h1{
+    font-size: 25px;
+    margin: 10px 20px;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+}
+/* Sliders */
+#slider{
+    margin: 20px auto;
+    padding: 10px;
+    overflow:hidden;
+}
+.slides{
+    overflow:hidden;
+    animation-name:fade;
+    animation-duration:1s;
+    display:none;
+}
+#slider img{
+    display: block;
+    margin: 0 auto;
+    width: 350px;
+    border-radius: 5%;
+}
+#dot{
+    margin:0 auto;
+    text-align:center;
+}
+.dot{
+    display:inline-block;
+    border-radius:50%;
+    background:#d3d3d3;
+    padding:8px;
+    margin:10px 5px;
+}
+.active{
+    background:black;
+}
+@media (max-width:567px){
+    #slider{
+      width:100%;
+  
+    }
+}
+/* Sliders */
+.six-sec h1{
+    width: 75%;
+    font-size: 25px;
+    margin: 10px auto;
+    color: #00a500;
+    font-weight: 700;
+    text-align: center;
+}
+.six-sec p{
+    font-size: 40px;
+    font-weight: 800;
+    background-color: black;
+    text-align: center;
+    padding: 25px;
+    color: white;
+}
+.six-sec p strike{
+    color: red;
+}
+.six-sec p span{
+    color: yellow;
+}
+.form-sec h1{
+    background-color: #00a500;
+    font-size: 30px;
+    font-weight: 800;
+    color: white;
+    margin: 20px 30px;
+    padding: 20px 30px;
+}
+/* form */
+.billing{
+    font-size: large;
+    font-weight: 700;
+    color: #3f3f3f;
+}
+.btn-holder{
+    display: flex;
+    justify-content: center;
+}
+.red-star{
+    color: red;
+}
+.row .col-md-5 .row{
+    border: 2px solid #bbbbbb;
+    padding: 5px;
+    border-radius: 5px;
+}
+form{
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+form h3{
+    color: green;
+    font-weight: 600;
+    text-align: center;
+}
+label{
+    color: #3f3f3f;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.cod{
+    margin: 20px;
+    background-color: #ccebcc;
+    padding: 10px;
+    border-radius: 5px;
+}
+.cod .title{
+    font-weight: 700;
+}
+.cod .details{
+    background-color: #e7e7e7;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.btn-submit{
+    padding: 10px 30px;
+    border-radius: 5px;
+    background-color: green;
+    color: white;
+    border: 2px solid #ff6600;
+}
+tr{
+    margin: 10px 0;
+}
+footer{
+    margin-top: 30px;
+    text-align: center;
+}
+/* form */

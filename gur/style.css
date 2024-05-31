@@ -198,8 +198,15 @@ svg{
     border: 2px solid #bbbbbb;
     padding: 5px;
     border-radius: 5px;
-}#order{
+}
+#order{
     padding: 20px;
+}
+form{
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
 }
 #order h3{
     color: green;
