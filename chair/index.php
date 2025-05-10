@@ -1,60 +1,95 @@
+<?php require "dbcon.php"; 
+
+// ?name=number=jela=p-code=price=add
+if(isset($_REQUEST['name'])){
+    $name = $_REQUEST['name'];
+    $number = $_REQUEST['number'];
+    $jela = $_REQUEST['jela'];
+    $p_code = $_REQUEST['p-code'];
+    $price = $_REQUEST['price'];
+    $shipping = $_REQUEST['shipping'];
+    $address = $_REQUEST['add'];
+    $sql = "INSERT INTO product_order (name, number, price, shipping, jela, address, post_code) 
+    VALUES ('$name', '$number', '$price', '$shipping', '$jela', '$address', '$p_code')";
+    if(mysqli_query($conn, $sql)){
+        header("location: ?success");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibaby toddler rocker baby rocking chair</title>
+    <title><?= $product['name'] ?></title>
     <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+    <?php
+        if(isset($_REQUEST['success'])){
+            $success = $_REQUEST['success'];
+            echo "
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'WOW...',
+                    text: 'Successfully submitted order. Please wait some minute, we will contuct you'
+                    });
+            </script>
+            ";
+        }
+    ?>
     <header>
         <img src="img/logo.png" alt="" class="img-fluid">
-        <h1>টিআইবেবি রকিং চেয়ার সাথে মিউজিক এবং ভাইব্রেশন</h1>
-        <p class="text">আপনার ছোট বাবু আছে কিন্তু বাবুর জন্য এই বেবি রকিং চেয়ার নাই তার মানে অনেক সুবিধা থেকে আপনি বঞ্চিত।</p>
-        <p class="price">মূল্য <strike>৩৫০০</strike> ৩১৫০/=</p>
+        <h1><?= $product['name'] ?></h1>
+        <p class="text"><?= $product['title'] ?></p>
+        <p class="price">মূল্য <strike><?= $product['old_price'] ?></strike> <?= $product['price'] ?>/=</p>
         <button>অর্ডার করতে চাই</button>
         <div class="video">
             <iframe width="420" height="315"
-            src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1"></iframe>
+            src="https://www.youtube.com/embed/<?= $product['vid_product'] ?>"></iframe>
         </div>
         <button>অর্ডার করতে চাই</button>
     </header>
-    <section class="need-sec">
-        <h3>
-            যে ৫টি কারনে প্রত্যেক মায়েদের জন্য বেবি রকিং চেয়ার ব্যবহার করা দরকার।
-        </h3>
-        <ul class="need">
-            <li>বাচ্চাকে রকিং চেয়ারে বসালে বাচ্চা কান্না করবে না।</li>
-            <li>বাচ্চাকে কোলে নেওয়ার লোক না থাকলে রকিং চেয়ারে বসিয়ে আপনি সহজে যে কনো কাজ করতে পারবেন।</li>
-            <li>দীর্ঘক্ষণ বাচ্চাকে কোলে না নিয়ে রকিং চেয়ারে রেখে হাসিখুশি ও আনন্দে রাখতে পারবেন সবসময়।</li>
-            <li>মা রান্না-বান্না করাসহ যে কোনো হাতের কাজ অতি সহজে করতে পারবেন শুধু মাত্র একটি পোডাক্ট ঘরে থাকলে।</li>
-            <li>যে সকল বাচ্চারা একটু রিলাক্স থাকতে পছন্দ করে তাদের জন্য এই পোডাক্ট এর বিকল্প হতে পারে না।</li>
-        </ul>
-    </section>
-    <section>
-        <h3>প্রোডাক্ট ফিচারস</h3>
-        <ul class="fiture">
-            <li>আধুনিক, টেকসই ফ্রেম</li>
-            <li>ব্যাটারির সাহায্যে চালিত</li>
-            <li>আকর্ষণীয় দুইটি কালার পিঙ্ক এবং স্কাই ব্লু</li>
-            <li>অপসারণযোগ্য খেলনা বার, ঝুলন্ত খেলনা</li>
-            <li>বাচ্চা পা নাড়াচাড়া করলে এটাও (দুলতে) থাকবে</li>
-            <li>মিউজিকের সাথে রকিং মোশন ও সাথে খেলনা রয়েছে</li>
-            <li>সর্বোচ্চ ধারন ক্ষমতা ১৮ কেজি</li>
-            <li>চমৎকার একটি পন্য যা দিয়ে আপনার বাচ্চা আনন্দের সাথে খেলা করবে।</li>
-        </ul>
-    </section>
+    <?php if($section_1['status'] == '1'){ ?>
+        <section class="need-sec">
+            <h3><?= $section_1['title'] ?></h3>
+            <ul class='need'>
+                <li><?= $section_1['one'] ?></li>
+                <li><?= $section_1['two'] ?></li>
+                <li><?= $section_1['three'] ?></li>
+                <li><?= $section_1['four'] ?></li>
+                <li><?= $section_1['five'] ?></li>
+            </ul>
+        </section>
+    <?php } 
+    if($section_2['status'] == '1'){ ?>
+        <section>
+            <h3><?= $section_2['title'] ?></h3>
+            <ul class="fiture">
+                <li><?= $section_2['one'] ?></li>
+                <li><?= $section_2['two'] ?></li>
+                <li><?= $section_2['three'] ?></li>
+                <li><?= $section_2['four'] ?></li>
+                <li><?= $section_2['five'] ?></li>
+                <li><?= $section_2['six'] ?></li>
+                <li><?= $section_2['seven'] ?></li>
+                <li><?= $section_2['eight'] ?></li>
+            </ul>
+        </section>
+    <?php } ?>
     <section>
         <h3>আমাদের প্রোডাক্ট ছবির ন্যায় বক্স আকারে আপনার কাছে পৌছাবে</h3>
         <div id="slider">  
-            <div class="slides"><img src="img/p1.jpeg"/></div>
-            <div class="slides"><img src="img/p2.jpg"/></div>
-            <div class="slides"><img src="img/p3.jpeg"/></div> 
-            <div class="slides"><img src="img/p4.jpeg"/></div>
-            <div class="slides"><img src="img/p5.jpeg"/></div>  
-            <div class="slides"><img src="img/p6.jpeg"/></div>  
-            <div class="slides"><img src="img/p7.jpeg"/></div>  
+            <div class="slides"><img src="<?= $slider['one'] ?>"/></div>
+            <div class="slides"><img src="<?= $slider['two'] ?>"/></div>
+            <div class="slides"><img src="<?= $slider['three'] ?>"/></div>
+            <div class="slides"><img src="<?= $slider['four'] ?>"/></div>
+            <div class="slides"><img src="<?= $slider['five'] ?>"/></div>
+            <div class="slides"><img src="<?= $slider['six'] ?>"/></div>
+            <div class="slides"><img src="<?= $slider['seven'] ?>"/></div>
               
             <div id="dot">
                 <span class="dot"></span>
@@ -69,15 +104,15 @@
         <p class="red-text text-center">আমাদের পন্য এমন বক্স আকারে যাবে, নিচের ভিডিও দেখে সেটিং করে নিতে হবে, খুবই সহজ ইনশাআল্লাহ পারবেন, না পারলে কল করবেন, আমরা বুঝায় দিবো।</p>
         <div class="video">
             <iframe width="420" height="315"
-            src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1"></iframe>
+            src="https://www.youtube.com/embed/<?= $product['vid_setting'] ?>"></iframe>
         </div>
-        <h4 class=" text-center"><b>বেবী রকিং চেয়ার সেটিং ভিডিও</b></h4>
+        <h4 class=" text-center"><b>Product সেটিং ভিডিও</b></h4>
     </section>
     <section>
-        <h3>যেকোন প্রয়োজনে যোগাযোগ করুন - 01709409266</h3>
-        <a href="tel:+8801709409266" class="call text-center">01709409266</a>
-        <p class="text-white text-center quality"><span class="text-black">১০০% হাই কোয়ালিটি</span> টেকসই বেবি রকিং চেয়ার সবারচেয়ে কম দামে নিতে চান তবে এখনি অর্ডার করতে নিচের ফর্মটি পূরণ করুন</p>
-        <form action="">
+        <h3>যেকোন প্রয়োজনে যোগাযোগ করুন - <?= $system_set['number'] ?></h3>
+        <a href="tel:+88<?= $system_set['number'] ?>" class="call text-center"><?= $system_set['number'] ?></a>
+        <p class="text-white text-center quality"><span class="text-info">১০০% হাই কোয়ালিটি</span> <?= $product['name'] ?> সবার চেয়ে কম দামে নিতে চান তবে এখনি অর্ডার করতে নিচের ফর্মটি পূরণ করুন</p>
+        <form action="" method="get">
             <div class="row">
                 <div class="col-md-6">
                     <p class="billing">Billing details</p>
@@ -160,6 +195,8 @@
                     <label for="p-code">পোস্ট কোড <span class="red-star">*</span></label>
                     <input type="number" name="p-code" id="p-code" class="form-control mb-4" placeholder="আপনার পোস্টাল কোড..." required>
                     
+                    <input type="hidden" name="price" value="<?= $product['price'] ?>">
+
                     <label for="add">আপনার ঠিকানা <span class="red-star">*</span></label>
                     <input type="text" name="add" id="add" class="form-control mb-4" placeholder="আপনার ঠিকানা লিখুন..." required>
                 </div>
@@ -180,24 +217,25 @@
                                             <img src="img/product.jpg" alt="" class="img-fluid w-100">
                                         </div>
                                         <div class="col-10">
-                                            <p class="small">বেবি রকিং চেয়ার X 1</p>
+                                            <p class="small"><?= $product['name'] ?> X 1</p>
                                         </div>
                                     </div>
                                 </td>
-                                <td>৳3150.00</td>
+                                <td>৳<?= $product['price'] ?>.00</td>
                             </tr>
                             
                             <tr>
                                 <td>Subtotal</td>
-                                <td>৳3150.00</td>
+                                <td>৳<?= $product['price'] ?>.00</td>
                             </tr>
                             <tr>
+                                <input type="hidden" name="shipping" value="<?= $system_set['shipping'] ?>">
                                 <td>Shipping</td>
-                                <td>৳100.00</td>
+                                <td>৳<?= $system_set['shipping'] ?>.00</td>
                             </tr>
                             <tr>
                                 <td>Total</td>
-                                <td>৳3250.00</td>
+                                <td>৳<?= $product['price'] + $system_set['shipping'] ?>.00</td>
                             </tr>
                         </tbody>
                     </table>
@@ -205,7 +243,7 @@
                         <p class="title">ক্যাশ অন ডেলিভারি</p>
                         <p class="details">পণ্য হাতে পেয়ে পেমেন্ট করতে পারবেন</p>
                         <div class="d-flex justify-content-center">
-                            <button class="btn-submit" type="submit">Place Order 3250.00৳</button>
+                            <button class="btn-submit" type="submit">Place Order <?= $product['price'] + $system_set['shipping'] ?>.00৳</button>
                         </div>
                     </div>
                 </div>
@@ -213,7 +251,7 @@
         </form>
     </section>
     <footer>
-        <p>© Copyright 2024 Your Business Name | This website design by <a style="color: red; font-weight: bold;" href="https://facebook.com/abdur.developer">Abdur</a></p>
+        <p>© Copyright 2024 <?= $system_set['b_name'] ?> | This website design by <a style="color: red; font-weight: bold;" href="https://facebook.com/abdur.developer">Abdur</a></p>
     </footer>
     <script>
         var index = 0;
